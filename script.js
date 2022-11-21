@@ -54,17 +54,17 @@ btnStart.addEventListener('click',
             submitBtn.classList.remove("d-none");
 
             // Creo l'array in cui inserire i numeri ricordati dall'utente
-            let immittedNumbers = [];
+            let insertedNumbers = [];
 
             // Aggiungo al click sul bottone la funzione che mi salverà il valore inserito
             submitBtn.addEventListener('click',
                 function() {
-                    immittedNumbers.push(parseInt(inputNum.value)); 
+                    insertedNumbers.push(parseInt(inputNum.value)); 
 
                     // inserisco una frase che faccia capire all'utente a che numero è
-                    quote.innerHTML = `okay inserisci il ${immittedNumbers.length + 1}° numero`;
+                    quote.innerHTML = `okay inserisci il ${insertedNumbers.length + 1}° numero`;
 
-                    if (immittedNumbers.length === 5) { 
+                    if (insertedNumbers.length === 5) { 
                         // faccio scomparire il riferimento del numero inserito
                         quote.innerHTML = "";
 
@@ -79,16 +79,16 @@ btnStart.addEventListener('click',
                         // imposto una variabile che darà il risultato all'utente
                         let output;
 
+                        let wrongNumbers = "e hai sbagliato: ";
+                        
                         // creo un array vuoto che conterrà i numeri indovinati
                         let correctNumbers = [];
 
-                        let wrongNumbers = "e hai sbagliato: ";
-
                         // controllo se i numeri inseriti corrispondano a quelli del gioco
                         for (let n = 0; n < 5; n++) {
-                            if (generatedNumbers.includes(immittedNumbers[n])) {
+                            if (generatedNumbers.includes(insertedNumbers[n])) {
                                 // prendo l'index del valore che corrisponde
-                                const index = generatedNumbers.indexOf(immittedNumbers[n]);
+                                const index = generatedNumbers.indexOf(insertedNumbers[n]);
 
                                 // pusho il numero indovinato nell'array apposito
                                 correctNumbers.push(generatedNumbers[index]);
