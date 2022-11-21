@@ -19,7 +19,7 @@ btnStart.addEventListener('click',
         const quote = document.querySelector(".quote");
 
         // imposto una variabile che sarà il punto di partenza del timer
-        let seconds = 3;
+        let seconds = 30;
 
         // svuoto il div dei numeri
         numbers.innerHTML = "";
@@ -76,11 +76,13 @@ btnStart.addEventListener('click',
                         // imposto una variabile di punteggio 
                         let score = 0;
 
-                        // imposto una variabile che darà il risultatoall'utente
+                        // imposto una variabile che darà il risultato all'utente
                         let output;
 
                         // creo un array vuoto che conterrà i numeri indovinati
                         let correctNumbers = [];
+
+                        let wrongNumbers = "e hai sbagliato: ";
 
                         // controllo se i numeri inseriti corrispondano a quelli del gioco
                         for (let n = 0; n < 5; n++) {
@@ -120,6 +122,8 @@ btnStart.addEventListener('click',
                                         break;
                                     case 5:
                                         output = `Complimenti, hai vinto! Hai indovinato tutti i numeri!`;
+
+                                        wrongNumbers = "";
                                         break;
                                 } 
                             }
@@ -131,6 +135,12 @@ btnStart.addEventListener('click',
 
                         for (let k = 0; k < correctNumbers.length; k++) {
                             numbers.innerHTML += `${correctNumbers[k]}; &nbsp;`;
+                        }
+
+                        numbers.innerHTML += wrongNumbers;
+
+                        for (k = 0; k < generatedNumbers.length; k++) {
+                            numbers.innerHTML += `${generatedNumbers[k]}; &nbsp;`;
                         }
 
                         // Rifaccio apparire il button per giocare
